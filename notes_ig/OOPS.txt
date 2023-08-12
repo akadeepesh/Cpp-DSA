@@ -1,0 +1,9 @@
+class car{
+    public:
+        char name[100];
+        int price;
+        int engine;
+}
+
+car car1;
+car car2;
