@@ -1,0 +1,14 @@
+Dyanamic memory allocation :-
+___________________________
+1. Heap memory
+2. Large size : 10^7, 10^8
+3. Have to remove manually.
+4. int *a = new int [1000] -> new keyword is used
+5. Runtime memory allocation.
+
+Static memory allocation :-
+_________________________
+1. Stack memory
+2. size : 10^6
+3. Self destructable.
+4. Compilation time allocation.
