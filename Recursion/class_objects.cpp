@@ -8,6 +8,10 @@ public:
     char name[100];
     int engine;
     int price;
+    Car()
+    {
+        cout << "Constructor called for object" << endl;
+    }
     void print()
     {
         cout << name << " " << engine << " " << price << endl;
