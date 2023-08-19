@@ -2,16 +2,16 @@
 #include <cstring>
 #include <algorithm>
 using namespace std;
-
+template <typename D>
 class Vector
 {
 public:
-    int *arr;
+    D *arr;
     int curr_size;
     int max_cap;
     Vector()
     {
-        arr = new int[2];
+        arr = new D[2];
         curr_size = 0;
         max_cap = 2;
     }
@@ -19,9 +19,9 @@ public:
     {
         if (max_cap == curr_size)
         {
-            int *old_arr = arr;
+            D *old_arr = arr;
             max_cap *= 2;
-            int *new_arr = new int[max_cap];
+            D *new_arr = new D[max_cap];
             for (int i = 0; i < curr_size; i++)
             {
                 new_arr[i] = old_arr[i];
@@ -44,7 +44,7 @@ public:
     {
         return max_cap;
     }
-    int operator[](int i)
+    D operator[](int i)
     {
         return arr[i];
     }
@@ -52,11 +52,11 @@ public:
 
 int main()
 {
-    Vector D;
+    Vector<int> D;
     D.push_back(2);
     D.push_back(3);
     D.push_back(4);
-    cout << D.size() << endl;
+    D.pop_back();
     cout << D.size() << endl;
     cout << D.capacity() << endl;
     for (int i = 0; i < D.size(); i++)
