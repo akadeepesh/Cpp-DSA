@@ -30,6 +30,22 @@ void insertAtBeginning(node *&head, node *&tail, int data)
     }
 }
 
+void insertAtEnd(node *&head, node *&tail, int data)
+{
+    if (head == NULL)
+    {
+        node *n = new node(data);
+        head = n;
+        tail = n;
+    }
+    else
+    {
+        node *n = new node(data);
+        tail->next = n;
+        tail = n;
+    }
+}
+
 void print(node *head)
 {
     while (head != NULL)
@@ -48,5 +64,7 @@ int main()
     insertAtBeginning(head, tail, 2);
     insertAtBeginning(head, tail, 3);
     insertAtBeginning(head, tail, 5);
+    insertAtEnd(head, tail, 7);
+    insertAtEnd(head, tail, 9);
     print(head);
 }
