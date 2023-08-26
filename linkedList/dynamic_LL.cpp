@@ -46,6 +46,17 @@ void insertAtEnd(node *&head, node *&tail, int data)
     }
 }
 
+int sizeofLL(node *head)
+{
+    int count = 0;
+    while (head != NULL)
+    {
+        count++;
+        head = head->next;
+    }
+    return count;
+}
+
 void print(node *head)
 {
     while (head != NULL)
@@ -54,6 +65,30 @@ void print(node *head)
         head = head->next;
     }
     cout << endl;
+}
+
+void insertAtIndex(node *&head, node *&tail, int idx, int data)
+{
+    if (idx == 0)
+    {
+        insertAtBeginning(head, tail, data);
+    }
+    if (idx == sizeofLL(head))
+    {
+        insertAtEnd(head, tail, data);
+    }
+    else
+    {
+        node *temp = head;
+        for (int i = 0; i < idx - 1; i++)
+        {
+            temp = temp->next;
+        }
+        node *bm = temp->next;
+        node *n = new node(data);
+        n->next = bm;
+        temp->next = n;
+    }
 }
 
 int main()
@@ -66,5 +101,7 @@ int main()
     insertAtBeginning(head, tail, 5);
     insertAtEnd(head, tail, 7);
     insertAtEnd(head, tail, 9);
+    insertAtIndex(head, tail, 2, 15);
     print(head);
+    cout << sizeofLL(head);
 }
