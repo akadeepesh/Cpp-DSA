@@ -98,12 +98,45 @@ void DeleteAtBegninig(node *&head, node *&tail)
         cout << "No Elements remaining";
         return;
     }
+
     else
     {
         node *temp = head;
+        if (head == tail)
+        {
+            delete temp;
+            head = NULL;
+            tail = NULL;
+            return;
+        }
         head = head->next;
         delete temp;
         return;
+    }
+}
+
+void DeleteAtEnd(node *&head, node *&tail)
+{
+    if (head == NULL)
+    {
+        return;
+    }
+    else if (head == tail)
+    {
+        delete head;
+        head = tail = NULL;
+    }
+
+    else
+    {
+        node *temp = head;
+        while (temp->next != tail)
+        {
+            temp = temp->next;
+        }
+        temp->next = NULL;
+        delete tail;
+        tail = temp;
     }
 }
 
@@ -118,7 +151,7 @@ int main()
     insertAtEnd(head, tail, 7);
     insertAtEnd(head, tail, 9);
     insertAtIndex(head, tail, 2, 15);
-    DeleteAtBegninig(head, tail);
+    DeleteAtEnd(head, tail);
     print(head);
     cout << sizeofLL(head);
 }
