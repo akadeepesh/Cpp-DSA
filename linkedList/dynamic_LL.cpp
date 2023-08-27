@@ -140,6 +140,61 @@ void DeleteAtEnd(node *&head, node *&tail)
     }
 }
 
+void DeleteAtIndex(node *&head, node *&tail, int idx)
+{
+    if (idx == 0)
+    {
+        DeleteAtBegninig(head, tail);
+    }
+
+    else
+    {
+        node *temp = head;
+        for (int i = 0; i < idx - 1; i++)
+        {
+            temp = temp->next;
+        }
+        node *del = temp->next;
+        node *nextele = del->next;
+        temp->next = nextele;
+        delete del;
+    }
+}
+
+bool search(node *head, int ele)
+{
+    node *temp = head;
+    for (int i = temp->data; head != NULL; temp = temp->next)
+    {
+        if (temp->data == ele)
+            return true;
+    }
+    return false;
+}
+
+bool searchrec(node *head, int ele)
+{
+    if (head == NULL)
+        return false;
+    if (head->data == ele)
+        return true;
+    searchrec(head->next, ele);
+}
+
+void ReverseLL(node *&head, node *&tail)
+{
+    node *curr = head;
+    node *prev = NULL;
+    while (curr != NULL)
+    {
+        node *nextele = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nextele;
+    }
+    swap(head, tail);
+}
+
 int main()
 {
     node *head, *tail;
@@ -152,6 +207,17 @@ int main()
     insertAtEnd(head, tail, 9);
     insertAtIndex(head, tail, 2, 15);
     DeleteAtEnd(head, tail);
+    DeleteAtIndex(head, tail, 3);
+    if (searchrec(head, 2))
+    {
+        cout << "Found" << endl;
+    }
+    else
+    {
+        cout << "Not Found" << endl;
+    }
+    print(head);
+    ReverseLL(head, tail);
     print(head);
     cout << sizeofLL(head);
 }
