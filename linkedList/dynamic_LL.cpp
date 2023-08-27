@@ -208,6 +208,18 @@ node *MidOfLL(node *&head)
     return slow;
 }
 
+node *FifthFromEnd(node *&head)
+{
+    node *slow = head;
+    node *fast = head->next->next->next->next->next;
+    while (fast != NULL)
+    {
+        fast = fast->next;
+        slow = slow->next;
+    }
+    return slow;
+}
+
 int main()
 {
     node *head, *tail;
@@ -233,6 +245,7 @@ int main()
     ReverseLL(head, tail);
     print(head);
     MidOfLL(head);
+    FifthFromEnd(head);
     cout << sizeofLL(head);
 }
 
