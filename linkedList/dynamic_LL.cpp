@@ -91,6 +91,22 @@ void insertAtIndex(node *&head, node *&tail, int idx, int data)
     }
 }
 
+void DeleteAtBegninig(node *&head, node *&tail)
+{
+    if (head == NULL)
+    {
+        cout << "No Elements remaining";
+        return;
+    }
+    else
+    {
+        node *temp = head;
+        head = head->next;
+        delete temp;
+        return;
+    }
+}
+
 int main()
 {
     node *head, *tail;
@@ -102,6 +118,7 @@ int main()
     insertAtEnd(head, tail, 7);
     insertAtEnd(head, tail, 9);
     insertAtIndex(head, tail, 2, 15);
+    DeleteAtBegninig(head, tail);
     print(head);
     cout << sizeofLL(head);
 }
