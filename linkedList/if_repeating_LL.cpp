@@ -40,16 +40,34 @@ void print(node *head)
     cout << endl;
 }
 
+void breakCycle(node *head, node *fast)
+{
+    node *prev = head;
+    node *slow = head;
+    while (prev->next != fast)
+    {
+        prev = prev->next;
+    }
+    while (fast != slow)
+    {
+        fast = fast->next;
+        slow = slow->next;
+        prev = prev->next;
+    }
+    prev->next = NULL;
+}
+
 bool if_repeating(node *head)
 {
     node *slow = head;
     node *fast = head;
-    while (fast != NULL || fast->next != NULL)
+    while (fast != NULL && fast->next != NULL)
     {
         fast = fast->next->next;
         slow = slow->next;
         if (fast == slow)
         {
+            breakCycle(head, fast);
             return true;
         }
     }
@@ -77,10 +95,11 @@ int main()
     createCycle(head, tail);
     if (if_repeating(head))
     {
-        cout << "true";
+        cout << "true" << endl;
+        print(head);
     }
     else
     {
-        cout << "false";
+        cout << "false" << endl;
     }
 }
