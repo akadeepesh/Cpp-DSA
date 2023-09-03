@@ -75,5 +75,9 @@ int main()
 {
     stack a;
     a.push(5);
-    cout << a.top();
+    a.push(6);
+    cout << a.top() << endl;
+    cout << a.empty() << endl;
+    a.pop();
+    cout << a.top() << endl;
 }
