@@ -1,0 +1,5 @@
+#include <list>
+list <int> -> doubly linked list (prev address, data, next address)
+takes more space
+
+Forward_list<int> -> singular linked list (less space) //never used
