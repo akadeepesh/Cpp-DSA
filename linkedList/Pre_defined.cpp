@@ -11,9 +11,16 @@ int main()
     l.push_back(4);
     l.push_front(5);
     l.push_back(6);
-    for (auto e : l)
+    for (auto i : l) // for each 'i' in list l #python wala scene vro
     {
-        cout << e << " ";
+        cout << i << " ";
     }
-    cout << "NULL";
+    cout << "NULL" << endl;
+
+    list<int>::iterator it = l.begin();
+    while (it != l.end())
+    {
+        cout << *it << endl;
+        it++;
+    }
 }
