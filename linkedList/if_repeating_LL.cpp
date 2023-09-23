@@ -13,7 +13,7 @@ public:
         next = NULL;
     }
 };
-
+// Floyd's cycle detection algo
 void insertAtEnd(node *&head, node *&tail, int data)
 {
     if (head == NULL)
@@ -61,7 +61,7 @@ bool if_repeating(node *head)
 {
     node *slow = head;
     node *fast = head;
-    while (fast != NULL && fast->next != NULL)
+    while (fast && fast->next)
     {
         fast = fast->next->next;
         slow = slow->next;
