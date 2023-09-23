@@ -93,20 +93,24 @@ void insertAtIndex(node *&head, node *&tail, int idx, int data)
 
 void DeleteAtBegninig(node *&head, node *&tail)
 {
-    if (head == NULL)
+    if (!head)
     {
         cout << "No Elements remaining";
         return;
+    }
+    else if (!head->next)
+    {
+        delete head;
+        head = tail = NULL;
     }
 
     else
     {
         node *temp = head;
-        if (head == tail)
+        if (head->next == NULL)
         {
             delete temp;
-            head = NULL;
-            tail = NULL;
+            head = tail = NULL;
             return;
         }
         head = head->next;
@@ -117,11 +121,11 @@ void DeleteAtBegninig(node *&head, node *&tail)
 
 void DeleteAtEnd(node *&head, node *&tail)
 {
-    if (head == NULL)
+    if (!head)
     {
         return;
     }
-    else if (head == tail)
+    else if (head->next == NULL)
     {
         delete head;
         head = tail = NULL;
@@ -134,8 +138,8 @@ void DeleteAtEnd(node *&head, node *&tail)
         {
             temp = temp->next;
         }
-        temp->next = NULL;
         delete tail;
+        temp->next = NULL;
         tail = temp;
     }
 }
