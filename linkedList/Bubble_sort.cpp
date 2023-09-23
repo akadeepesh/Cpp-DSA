@@ -62,16 +62,14 @@ void B_sort(node *&head)
             node *nextele = curr->next;
             if (curr->data > nextele->data)
             {
+                curr->next = nextele->next;
+                nextele->next = curr;
                 if (prev == NULL)
                 {
-                    curr->next = nextele->next;
-                    nextele->next = curr;
                     prev = head = nextele;
                 }
                 else
                 {
-                    curr->next = nextele->next;
-                    nextele->next = curr;
                     prev->next = nextele;
                     prev = nextele;
                 }
