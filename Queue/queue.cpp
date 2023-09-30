@@ -36,7 +36,6 @@ public:
     {
         if (cs > 0)
         {
-            cout << "Popped element: " << a[f] << endl;
             f = (f + 1) % n;
             cs--;
         }
@@ -46,22 +45,14 @@ public:
         }
     }
 
+    int front()
+    {
+        return a[f];
+    }
+
     bool empty()
     {
         return (cs == 0);
-    }
-
-    int front()
-    {
-        if (cs > 0)
-        {
-            return a[f];
-        }
-        else
-        {
-            cout << "Queue is empty\n";
-            return -1; // Return a sentinel value to indicate an empty queue.
-        }
     }
 };
 
