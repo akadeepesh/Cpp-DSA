@@ -75,4 +75,7 @@ int main()
     q.push(6);
     q.push(7);
     q.push(8);
+    q.pop();
+    cout << q.empty() << endl;
+    cout << q.front();
 }
