@@ -162,6 +162,34 @@ void levelOrder(node *root)
     }
 }
 
+class Pair
+{
+public:
+    int height;
+    int diameter;
+};
+
+Pair fastDiameter(node *root)
+{
+    if (!root)
+    {
+        Pair p;
+        p.height = p.diameter = 0;
+        return p;
+    }
+
+    Pair left = fastDiameter(root->left);
+    Pair right = fastDiameter(root->right);
+    Pair p;
+    p.height = 1 + max(left.height, right.height);
+
+    int op1 = left.height + right.height;
+    int op2 = left.diameter;
+    int op3 = right.diameter;
+    p.diameter = max(op1, max(op2, op3));
+    return p;
+}
+
 int main()
 {
 
@@ -185,6 +213,8 @@ int main()
     {
         cout << "Nahi milli\n";
     }
-
+    Pair ans = fastDiameter(root);
+    cout << "fast height" << ans.height << endl;
+    cout << "fast height" << ans.diameter << endl;
     return 0;
 }
