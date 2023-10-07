@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
 class node
@@ -124,6 +125,41 @@ node *findNode(node *root, int key)
     }
 
     return NULL;
+}
+
+void levelOrder(node *root)
+{
+    if (!root)
+    {
+        return;
+    }
+    queue<node *> q;
+    q.push(NULL);
+    while (!q.empty())
+    {
+        node *n = q.front();
+        q.pop();
+        if (n)
+        {
+            cout << n->data << " ";
+            if (n->left)
+            {
+                q.push(n->left);
+            }
+            if (n->right)
+            {
+                q.push(n->right);
+            }
+        }
+        else
+        {
+            cout << endl;
+            if (!q.empty())
+            {
+                q.push(NULL);
+            }
+        }
+    }
 }
 
 int main()
