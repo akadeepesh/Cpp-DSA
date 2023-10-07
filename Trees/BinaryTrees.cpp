@@ -190,6 +190,18 @@ Pair fastDiameter(node *root)
     return p;
 }
 
+void mirror(node *root)
+{
+    if (!root)
+    {
+        return;
+    }
+
+    swap(root->left, root->right);
+    mirror(root->left);
+    mirror(root->right);
+}
+
 int main()
 {
 
