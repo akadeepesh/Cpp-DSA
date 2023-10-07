@@ -202,9 +202,37 @@ void mirror(node *root)
     mirror(root->right);
 }
 
+// Build tree using inorder and pre-order
+int pre[] = {8, 10, 1, 6, 4, 7, 3, 14, 13};
+int k = 0;
+node *buildTree(int *in, int s, int e)
+{
+    // base case
+    if (s > e)
+    {
+        return NULL;
+    }
+    // recursive case
+    int d = pre[k++];
+    node *root = new node();
+
+    for (int j = s; j <= e; ++j)
+    {
+        if (in[j] == d)
+        {
+            i = j;
+            break;
+        }
+    }
+
+    root->left = buildTree(in, s, i - 1);
+    root->right = buildTree(in, i + 1, e);
+    return root;
+}
+
 int main()
 {
-
+    int in[] = {1, 10, 4, 6, 7, 8, 3, 14, 13};
     node *root = createTree();
     preOrder(root);
     cout << endl;
@@ -230,3 +258,4 @@ int main()
     cout << "fast height" << ans.diameter << endl;
     return 0;
 }
+// Main edit kr lio
