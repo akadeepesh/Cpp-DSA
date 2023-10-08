@@ -68,6 +68,7 @@ int height(node *root)
     {
         return 0;
     }
+
     // recursive case
     return max(height(root->left), height(root->right)) + 1;
 }
@@ -96,15 +97,16 @@ node *insertInBST(node *root, int data)
 node *createBST()
 {
     node *root = NULL;
-    int data;
 
-    cin >> data;
+    // Predefined input array
+    int arr[] = {5, 3, 7, 2, 4, 6, 8};
+    int n = sizeof(arr) / sizeof(arr[0]);
 
-    while (data != -1)
+    for (int i = 0; i < n; i++)
     {
-        root = insertInBST(root, data);
-        cin >> data;
+        root = insertInBST(root, arr[i]);
     }
+
     return root;
 }
 
@@ -120,10 +122,11 @@ node *SearchInBST(node *root, int key)
         return root;
     }
 
-    else if
+    else if (root->data > key)
     {
         return SearchInBST(root->left, key);
     }
+
     else
     {
         return SearchInBST(root->right, key);
@@ -139,45 +142,67 @@ bool CheckBalanced(node *root)
 
     int hl = height(root->left);
     int hr = height(root->right);
+
     if (abs(hl - hr) <= 1 && CheckBalanced(root->left) && CheckBalanced(root->right))
     {
         return true;
     }
+
     return false;
 }
 
 Pair checkBalanced_O(node *root)
 {
+    Pair p;
+
     if (!root)
     {
-        Pair p;
         p.height = 0;
         p.isBalanced = true;
+
         return p;
     }
+
     Pair left = checkBalanced_O(root->left);
-    Pair right = checkBalanced_O(root->rigth);
-    Pair p;
+    Pair right = checkBalanced_O(root->right);
+
     p.height = max(left.height, right.height) + 1;
 
     if (abs(left.height - right.height) <= 1 && left.isBalanced && right.isBalanced)
     {
         p.isBalanced = true;
     }
+
     else
     {
         p.isBalanced = false;
     }
+
     return p;
 }
 
 int main()
 {
     node *root = createBST();
+
     preOrder(root);
     cout << endl;
+
     inOrder(root);
     cout << endl;
+
     postOrder(root);
     cout << endl;
+
+    Pair x = checkBalanced_O(root);
+
+    if (x.isBalanced)
+    {
+        cout << "Balanced";
+    }
+
+    else
+    {
+        cout << "Not balanced";
+    }
 }
