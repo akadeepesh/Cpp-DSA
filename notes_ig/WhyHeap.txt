@@ -1,0 +1,25 @@
+LL :- 
+1. Sorted -- 
+    Insertion [Time - O(n)]
+    Deletion [Time - O(1)]                                              //Minimum or Maximum value only for Deletion
+    Search [Time - O(1)]
+2. Unsorted -- 
+    Insertion [Time - O(1)]
+    Deletion [Time - O(n)]
+    Search [Time - O(n)]
+
+Array :-
+1. Sorted -- 
+    Insertion [Time - O(n)]
+    Deletion [Time - O(n)]
+    Search [Time - O(1)]
+2. Unsorted -- 
+    Insertion [Time - O(1)]
+    Deletion [Time - O(n)]
+    Search [Time - O(n)]
+
+
+Heap/priority queue (Takes less time):-                                                  //Only for Minimum and Maximum value
+    Insertion [Time - O(log(n))]
+    Deletion [Time - O(log(n))]
+    Search [Time - O(1)]
