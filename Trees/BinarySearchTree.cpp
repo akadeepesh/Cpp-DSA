@@ -1,5 +1,7 @@
 #include <iostream>
 #include <queue>
+#include <cmath>
+
 using namespace std;
 
 class node
@@ -119,6 +121,22 @@ node *SearchInBST(node *root, int key)
     {
         return SearchInBST(root->right, key);
     }
+}
+
+bool CheckBalanced(node *root)
+{
+    if (!root)
+    {
+        return true;
+    }
+
+    int hl = height(root->left);
+    int hr = height(root->right);
+    if (abs(hl - hr) <= 1 && CheckBalanced(root->left) && CheckBalanced(root->right))
+    {
+        return true;
+    }
+    return false;
 }
 
 int main()
