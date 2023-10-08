@@ -19,7 +19,14 @@ Array :-
     Search [Time - O(n)]
 
 
-Heap/priority queue (Takes less time):-                                                  //Only for Minimum and Maximum value
+Heap/priority queue (Takes less time):-                                   //Only for Minimum and Maximum value
     Insertion [Time - O(log(n))]
     Deletion [Time - O(log(n))]
     Search [Time - O(1)]
+
+Heap data structure:-
+    1. Binary Tree
+    2. Complete Binary Tree Property
+    3. Heap Order Property (HOP)
+        a. Minimum HOP
+        b. Maximum HOP
