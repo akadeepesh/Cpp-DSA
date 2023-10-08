@@ -181,9 +181,28 @@ Pair checkBalanced_O(node *root)
     return p;
 }
 
+node *buildBalancedBST(int a[], int s, int e)
+{
+    // base case
+    if (s > e)
+    {
+        return NULL;
+    }
+
+    // recursive case
+    int m = (s + e) / 2;
+    node *root = new node(a[m]);
+    root->left = buildBalancedBST(a, s, m - 1);
+    root->right = buildBalancedBST(a, m + 1, e);
+    return root;
+}
+
 int main()
 {
-    node *root = createBST();
+    // node *root = createBST();
+    int a[] = {1, 2, 4, 5, 7, 8, 9, 10};
+    int n = sizeof(a) / sizeof(int);
+    node *root = buildBalancedBST(a, 0, n - 1);
 
     preOrder(root);
     cout << endl;
