@@ -17,6 +17,13 @@ public:
     }
 };
 
+class Pair
+{
+public:
+    int height;
+    bool isBalanced;
+};
+
 void postOrder(node *root)
 {
     if (!root)
@@ -137,6 +144,31 @@ bool CheckBalanced(node *root)
         return true;
     }
     return false;
+}
+
+Pair checkBalanced_O(node *root)
+{
+    if (!root)
+    {
+        Pair p;
+        p.height = 0;
+        p.isBalanced = true;
+        return p;
+    }
+    Pair left = checkBalanced_O(root->left);
+    Pair right = checkBalanced_O(root->rigth);
+    Pair p;
+    p.height = max(left.height, right.height) + 1;
+
+    if (abs(left.height - right.height) <= 1 && left.isBalanced && right.isBalanced)
+    {
+        p.isBalanced = true;
+    }
+    else
+    {
+        p.isBalanced = false;
+    }
+    return p;
 }
 
 int main()
