@@ -197,6 +197,62 @@ node *buildBalancedBST(int a[], int s, int e)
     return root;
 }
 
+// BST to LinkedList
+class LinkedList
+{
+public:
+    node *head, *tail;
+    LinkedList()
+    {
+        head = tail = NULL;
+    }
+};
+
+LinkedList BSTtoLL(node *root)
+{
+    LinkedList l;
+
+    // base case
+    if (!root)
+    {
+        return l;
+    }
+
+    // recursive case
+    if (root->left && root->right)
+    {
+        LinkedList left = BSTtoLL(root->left);
+        LinkedList right = BSTtoLL(root->right);
+        left.tail->right = root;
+        root->right = right.head;
+
+        l.head = left.head;
+        l.tail = right.tail;
+        return l;
+    }
+    else if (root->left && !root->right)
+    {
+        LinkedList left = BSTtoLL(root->left);
+        left.tail->right = root;
+        l.head = left.head;
+        l.tail = root;
+        return l;
+    }
+    else if (!root->left && root->right)
+    {
+        LinkedList right = BSTtoLL(root->right);
+        root->right = right.head;
+        l.head = root;
+        l.tail = right.tail;
+        return l;
+    }
+    else
+    {
+        l.head = l.tail = root;
+        return l;
+    }
+}
+
 int main()
 {
     // node *root = createBST();
@@ -217,11 +273,23 @@ int main()
 
     if (x.isBalanced)
     {
-        cout << "Balanced";
+        cout << "Balanced" << endl;
     }
 
     else
     {
-        cout << "Not balanced";
+        cout << "Not balanced" << endl;
+    }
+
+    LinkedList l = BSTtoLL(root);
+    node *head = l.head;
+    while (head != NULL)
+    {
+        cout << head->data << "-->";
+        head = head->right;
+    }
+    if (head == NULL)
+    {
+        cout << "NULL";
     }
 }
