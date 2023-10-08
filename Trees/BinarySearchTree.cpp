@@ -51,6 +51,18 @@ void preOrder(node *root)
     preOrder(root->left);
     preOrder(root->right);
 }
+
+int height(node *root)
+{
+    // base case
+    if (!root)
+    {
+        return 0;
+    }
+    // recursive case
+    return max(height(root->left), height(root->right)) + 1;
+}
+
 node *insertInBST(node *root, int data)
 {
     if (!root)
@@ -112,4 +124,10 @@ node *SearchInBST(node *root, int key)
 int main()
 {
     node *root = createBST();
+    preOrder(root);
+    cout << endl;
+    inOrder(root);
+    cout << endl;
+    postOrder(root);
+    cout << endl;
 }
