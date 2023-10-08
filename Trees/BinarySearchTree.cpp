@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
 class node
@@ -84,6 +85,28 @@ node *createBST()
         cin >> data;
     }
     return root;
+}
+
+node *SearchInBST(node *root, int key)
+{
+    if (!root)
+    {
+        return NULL;
+    }
+
+    if (root->data == key)
+    {
+        return root;
+    }
+
+    else if
+    {
+        return SearchInBST(root->left, key);
+    }
+    else
+    {
+        return SearchInBST(root->right, key);
+    }
 }
 
 int main()
