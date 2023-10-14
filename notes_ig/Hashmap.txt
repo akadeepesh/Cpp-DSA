@@ -1,0 +1,9 @@
+Average time - O(1) --> Insertion, Update, Delete and Find
+Drawback - Order of elements cannot be maintained
+
+
+### Same as dictionary in Python- Key Value pair, where key => Unique key
+If key got repeated there will be a linked list of values at that key, having the heat address on hashmap
+
+
+Hash function - To convert string to integer                                    # As we can't use stings as index
