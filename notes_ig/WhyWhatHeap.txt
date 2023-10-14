@@ -28,5 +28,5 @@ Heap data structure:-
     1. Binary Tree
     2. Complete Binary Tree Property
     3. Heap Order Property (HOP)
-        a. Minimum HOP
-        b. Maximum HOP
+        a. Minimum HOP - Parent is smaller than children
+        b. Maximum HOP - Children is smaller than parent
